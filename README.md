@@ -354,9 +354,9 @@ const TestComponent: React.FC<IProps> = ({ theme }) => (
 check
 
 ```
-yarn build
-yarn build-storybook
-yarn storybook
+npm run build
+npm run build-storybook
+npm run storybook
 ```
 
 update .gitignore (add)
