@@ -131,7 +131,7 @@ touch src/test-component/test-component.scss
 ```
 
 ```
-touch src/test-component/test-component.stories.js
+touch src/test-component/test-component.stories.tsx
 ```
 
 ```
@@ -236,6 +236,118 @@ yarn build
 Builds ok
 
 Commit
+
+## Add Storybook
+
+```
+yarn add -D @babel/core babel-loader sass-loader @storybook/react @storybook/addon-actions @storybook/addon-links @storybook/addons
+```
+
+update package.json with new scripts
+
+```
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "storybook": "start-storybook -p 6006",
+    "build-storybook": "build-storybook"
+```
+
+```
+mkdir .storybook
+touch .storybook/addons.js
+```
+
+```
+import { configure } from '@storybook/react';
+
+// automatically import all files ending in *.stories.js
+configure(
+  [
+    require.context('../src', true, /\.stories\.js$/),
+  ],
+  module
+);
+```
+
+```
+touch .storybook/webpack.config.js
+```
+
+```
+const path = require('path');
+
+module.exports = async ({ config, mode }) => {
+  config.module.rules.push({
+    test: /\.scss$/,
+    use: ['style-loader', 'css-loader', 'sass-loader'],
+    include: path.resolve(__dirname, '../'),
+  });
+
+  config.module.rules.push({
+    test: /\.(ts|tsx)$/,
+    loader: require.resolve('babel-loader'),
+    options: {
+      presets: [['react-app', { flow: false, typescript: true }]],
+    },
+  });
+  config.resolve.extensions.push('.ts', '.tsx');
+
+  return config;
+}; 
+```
+
+update styles for test component
+
+```
+.test-component {
+    background-color: white;
+    border: 1px solid black;
+    padding: 16px;
+    width: 360px;
+    text-align: center;
+
+    .heading {
+        font-size: 64px;
+    }
+
+    &.secondary {
+        background-color: black;
+        color: white;
+    }
+} 
+```
+
+update test-component stories
+
+```
+import React from "react";
+import TestComponent from './TestComponent';
+
+export default {
+  title: "TestComponent"
+};
+
+export const Primary = () => <TestComponent theme="primary" />;
+
+export const Secondary = () => <TestComponent theme="secondary" />;
+```
+
+alter test-component by adding interface
+
+```
+interface IProps {
+  theme: 'primary' | 'secondary';
+}
+
+const TestComponent: React.FC<IProps> = ({ theme }) => (
+  <div className={`test-component ${theme}`}>
+```
+
+check
+
+```
+yarn build
+yarn build-storybook
+yarn storybook
 
 
 
