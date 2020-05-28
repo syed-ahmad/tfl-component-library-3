@@ -348,6 +348,12 @@ check
 yarn build
 yarn build-storybook
 yarn storybook
+```
+
+update .gitignore
+
+```
+```
 
 
 
