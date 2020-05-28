@@ -240,7 +240,7 @@ Commit
 ## Add Storybook
 
 ```
-yarn add -D @babel/core babel-loader sass-loader @storybook/react @storybook/addon-actions @storybook/addon-links @storybook/addons
+npm i --save-dev @babel/core babel-loader sass-loader @storybook/react @storybook/addon-actions @storybook/addon-links @storybook/addons
 ```
 
 update package.json with new scripts
