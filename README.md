@@ -13,7 +13,7 @@ take all defaults for now
 yarn init
 ```
 
- add preceding instructions
+add preceding instructions
 
 ```
 touch README.md
@@ -28,7 +28,7 @@ in .gitignore
 
 ```
 node_modules/
-build/ 
+build/
 ```
 
 in source control, create new empty repo
@@ -127,7 +127,7 @@ touch src/test-component/test-component.scss
     .heading {
         font-size: 64px;
     }
-} 
+}
 ```
 
 ```
@@ -301,7 +301,7 @@ module.exports = async ({ config, mode }) => {
   config.resolve.extensions.push('.ts', '.tsx');
 
   return config;
-}; 
+};
 ```
 
 update styles for test component
@@ -322,7 +322,7 @@ update styles for test component
         background-color: black;
         color: white;
     }
-} 
+}
 ```
 
 update test-component stories
@@ -359,11 +359,57 @@ yarn build-storybook
 yarn storybook
 ```
 
-update .gitignore
+update .gitignore (add)
 
 ```
+storybook-static/
 ```
 
+After this point, I'm following the commits from https://github.com/HarveyD/react-component-library/commit/672f037b731d34532b7a191352cab91a34deb729 onwards
 
+```
+yarn add -D @types/jest @types/enzyme @types/enzyme-adapter-react-16 enzyme enzyme-adapter-react-16 enzyme-to-json identity-obj-proxy jest ts-jest
+```
 
+## New readme instructions
 
+# React Component Library
+
+This project skeleton was created to help people get started with creating their own React component library using Rollup, Sass, Typescript and Storybook.
+
+[**Read my blog post about why and how I created this project skeleton ▸**](https://blog.harveydelaney.com/creating-your-own-react-component-library/)
+
+## Development
+
+### Testing
+
+`yarn test`
+
+### Building
+
+`yarn build`
+
+### Storybook
+
+`yarn storybook`
+
+### Publishing
+
+`yarn publish`
+
+## Component Usage
+
+Let's say you created a public npm library called `tfl-component-library` with the `TestComponent` component created in this repository.
+
+Usage of the component (once published to the registry and then installed into another project) will be:
+
+```
+import React from "react";
+import { TestComponent } from "tfl-component-library";
+const TestApp = () => (
+    <div className="app-container>
+        <TestComponent theme="primary" />
+    </div>
+);
+export TestApp;
+```

@@ -17,4 +17,4 @@ module.exports = async ({ config, mode }) => {
   config.resolve.extensions.push('.ts', '.tsx');
 
   return config;
-}; 
+};

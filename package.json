@@ -7,10 +7,11 @@
   "files": [
     "build"
   ],
-  "description": "A TFL skeleton for React Component library using Rollup, TypeScript, Sass and Storybook",
+  "description": "TFL React Component library using Rollup, TypeScript, Sass and Storybook",
   "scripts": {
     "build": "rollup -c",
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "jest --watch",
+    "test:once": "jest",
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook"
   },
@@ -33,7 +34,7 @@
     "url": "https://github.com/pgmoir/tfl-component-library-3/issues"
   },
   "homepage": "https://github.com/pgmoir/tfl-component-library-3#readme",
-  "dependencies": {
+  "peerDependencies": {
     "react": "^16.13.1",
     "react-dom": "^16.13.1"
   },
@@ -43,9 +44,18 @@
     "@storybook/addon-links": "^5.3.19",
     "@storybook/addons": "^5.3.19",
     "@storybook/react": "^5.3.19",
+    "@types/enzyme": "^3.10.5",
+    "@types/enzyme-adapter-react-16": "^1.0.6",
+    "@types/jest": "^25.2.3",
     "@types/react": "^16.9.35",
     "babel-loader": "^8.1.0",
     "babel-preset-react-app": "^9.1.2",
+    "enzyme": "^3.11.0",
+    "enzyme-adapter-react-16": "^1.15.2",
+    "enzyme-to-json": "^3.5.0",
+    "identity-obj-proxy": "^3.0.0",
+    "jest": "^26.0.1",
+    "prettier": "^2.0.5",
     "rollup": "^2.11.2",
     "rollup-plugin-commonjs": "^10.1.0",
     "rollup-plugin-node-resolve": "^5.2.0",
@@ -53,6 +63,7 @@
     "rollup-plugin-sass": "^1.2.2",
     "rollup-plugin-typescript2": "^0.27.1",
     "sass-loader": "^8.0.2",
+    "ts-jest": "^26.0.0",
     "typescript": "^3.9.3"
   }
 }
