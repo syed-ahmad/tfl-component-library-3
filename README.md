@@ -131,7 +131,7 @@ touch src/test-component/test-component.scss
 ```
 
 ```
-touch src/test-component/test-component.stories.tsx
+touch src/test-component/test-component.stories.js
 ```
 
 ```
@@ -254,6 +254,15 @@ update package.json with new scripts
 ```
 mkdir .storybook
 touch .storybook/addons.js
+```
+
+```
+import '@storybook/addon-actions/register';
+import '@storybook/addon-links/register';
+```
+
+```
+touch .storybook/config.js
 ```
 
 ```

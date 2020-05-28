@@ -1,9 +1,2 @@
-import { configure } from '@storybook/react';
-
-// automatically import all files ending in *.stories.js
-configure(
-  [
-    require.context('../src', true, /\.stories\.js$/),
-  ],
-  module
-);
+import '@storybook/addon-actions/register';
+import '@storybook/addon-links/register';
