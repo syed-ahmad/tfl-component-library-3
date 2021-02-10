@@ -7,7 +7,9 @@ trigger:
 - main
 
 pool:
-  vmImage: 'ubuntu-latest'
+  name: SyedAgentPool
+  demands:
+    - Agent.OS -equals Linux
 
 steps:
 - task: NodeTool@0
