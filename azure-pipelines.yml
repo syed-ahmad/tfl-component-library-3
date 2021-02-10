@@ -8,8 +8,6 @@ trigger:
 
 pool:
   name: SyedAgentPool
-  demands:
-    - Agent.OS -equals Linux
 
 steps:
 - task: NodeTool@0
